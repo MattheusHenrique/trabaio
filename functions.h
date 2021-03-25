@@ -52,8 +52,10 @@ p_complex power(p_complex c1) {
 }
 
 
-//Realiza a operação de divisão pela multiplicacao do conjugado do divisor
+/*Realiza a operação de divisão pela multiplicacao do conjugado do divisor
 //z = a + bi  conj(z) = a - bi
+//Seria adequado que a mascara para c-real, c-img fosse um float, porem seria preciso alterar
+todos os tipos int(%d) na main */
 p_complex divide(p_complex c1, p_complex c2) { 
     p_complex newComplex = allocate();
     int divisorConjugado = c2->real*c2->real + c2->img*c2->img;  
