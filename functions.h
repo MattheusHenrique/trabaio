@@ -2,58 +2,62 @@
 #include <stdlib.h>
 #include "complex.h"
 
-///Todas as funções retornam um Struct Complex
 
-Complex create(int real, int img){
-    Complex newComplex;
-    newComplex.real = real;
-    newComplex.img = img;
-    return newComplex;
-}
-
-Complex sum(Complex c1, Complex c2){
-    Complex newComplex;
-    newComplex.real = c1.real + c2.real;
-    newComplex.img = c1.img + c2.img;
-    return newComplex;
-}
-
-Complex subtract(Complex c1, Complex c2){
-    Complex newComplex;
-    newComplex.real = c1.real - c2.real;
-    newComplex.img = c1.img - c2.img;
-    return newComplex;
-}
-
-Complex multiply(Complex c1, Complex c2){
-    Complex newComplex;
-    newComplex.real = c1.real*c2.real + (-1)*(c1.img*c2.img);
-    newComplex.img = c1.real*c2.img + c1.img*c2.real;
+//Todas as funções retornam um ponteiro para complex (p_complex)
+//allocate cria ponteiro para complexo
+p_complex allocate() {
+    p_complex newComplex;
+    newComplex = malloc(sizeof(Complex));
     return newComplex;
 }
 
 
-Complex power(Complex c1){
-    Complex newComplex;
-    newComplex.real = c1.real*c1.real + (-1)*(c1.img*c1.img);
-    newComplex.img = c1.real*c1.img + c1.img*c1.real;
+p_complex create(int real, int img) {
+    p_complex newComplex = allocate();
+    newComplex->real = real;
+    newComplex->img = img;
     return newComplex;
 }
 
-float module(Complex c1){
-    float module = c1.real*c1.real + c1.img*c1.img;
-    module = sqrt(module);
-    return module; 
+
+p_complex sum(p_complex c1, p_complex c2){
+    p_complex newComplex = allocate();
+    newComplex->real = c1->real + c2->real;
+    newComplex->img = c1->img + c2->img;
+    return newComplex;
 }
+
+
+p_complex subtract(p_complex c1, p_complex c2) {
+    p_complex newComplex = allocate();
+    newComplex->real = c1->real - c2->real;
+    newComplex->img = c1->img - c2->img;
+    return newComplex;
+}
+
+
+p_complex multiply(p_complex c1, p_complex c2) {
+    p_complex newComplex = allocate();
+    newComplex->real = c1->real*c2->real + (-1)*(c1->img*c2->img);
+    newComplex->img = c1->real*c2->img + c1->img*c2->real;
+    return newComplex;
+}
+
+
+p_complex power(p_complex c1) {
+    p_complex newComplex = allocate();
+    newComplex->real = c1->real*c1->real + (-1)*(c1->img*c1->img);
+    newComplex->img = c1->real*c1->img + c1->img*c1->real;
+    return newComplex;
+}
+
 
 //Realiza a operação de divisão pela multiplicacao do conjugado do divisor
 //z = a + bi  conj(z) = a - bi
-Complex divide(Complex c1, Complex c2){
-    Complex newComplex;
-    int divisorConjugado = c2.real*c2.real + c2.img*c2.img;  
-    newComplex.real = (c1.real*c2.real + c1.img*c2.img)/divisorConjugado;
-    newComplex.img = (-1*(c1.real*c2.img) + c1.img*c2.real)/divisorConjugado;
+p_complex divide(p_complex c1, p_complex c2) { 
+    p_complex newComplex = allocate();
+    int divisorConjugado = c2->real*c2->real + c2->img*c2->img;  
+    newComplex->real = (c1->real*c2->real + c1->img*c2->img)/divisorConjugado;
+    newComplex->img = (-1*(c1->real*c2->img) + c1->img*c2->real)/divisorConjugado;
     return newComplex;
-
-
 }

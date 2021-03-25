@@ -6,3 +6,6 @@ typedef struct{
     int real;
     int img;
 }Complex;
+
+//Ponteiro para um complexo - estético
+typedef Complex * p_complex ;
