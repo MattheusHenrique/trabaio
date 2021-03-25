@@ -32,6 +32,20 @@ Complex multiply(Complex c1, Complex c2){
     return newComplex;
 }
 
+
+Complex power(Complex c1){
+    Complex newComplex;
+    newComplex.real = c1.real*c1.real + (-1)*(c1.img*c1.img);
+    newComplex.img = c1.real*c1.img + c1.img*c1.real;
+    return newComplex;
+}
+
+float module(Complex c1){
+    float module = c1.real*c1.real + c1.img*c1.img;
+    module = sqrt(module);
+    return module; 
+}
+
 //Realiza a operação de divisão pela multiplicacao do conjugado do divisor
 //z = a + bi  conj(z) = a - bi
 Complex divide(Complex c1, Complex c2){
@@ -40,4 +54,6 @@ Complex divide(Complex c1, Complex c2){
     newComplex.real = (c1.real*c2.real + c1.img*c2.img)/divisorConjugado;
     newComplex.img = (-1*(c1.real*c2.img) + c1.img*c2.real)/divisorConjugado;
     return newComplex;
+
+
 }

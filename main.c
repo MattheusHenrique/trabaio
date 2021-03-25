@@ -23,7 +23,7 @@ void format(Complex c){
 int main(void){
 
     //declaração e chamada de funções 
-    Complex c1, c2, c3, c4, c5, c6, c7;
+    Complex c1, c2, c3, c4, c5, c6, c7, c8;
     
     c1 = create(2, 2);
     c2 = create(1, 1);
@@ -32,6 +32,7 @@ int main(void){
     c5 = multiply(c1, c2);
     c6 = divide(c1, c2);
     c7 = create(0, 0);
+    c8 = power(c1);
     
     
     //Impressão dos resultados obtidos
@@ -42,4 +43,5 @@ int main(void){
     format(c5);
     format(c6);
     format(c7);
+    format(c8);
 }
